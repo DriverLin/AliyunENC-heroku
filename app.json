@@ -1,0 +1,14 @@
+{
+    "name": "EXviewer",
+    "description": "PWA for the Exhentai",
+    "keywords": ["pwa", "exhentai"],
+    "env": {
+        "KEY": {
+            "description": "解码所用密码",
+            "value": "***"
+        }
+    },
+    "website": "https://github.com/DriverLin/EXviewerUI",
+    "repository": "https://github.com/DriverLin/EXviewerUI",
+    "success_url": "/"
+}
