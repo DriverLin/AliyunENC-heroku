@@ -26,6 +26,7 @@ def getThread(port):
 
 if __name__ == "__main__":
     os.system("chmod 777 ./rclone")
+    os.system("pip install aliyundrive-webdav")
     threads = getThread(os.environ.get("PORT"))
     for t in threads:
         t.start()
