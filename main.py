@@ -21,25 +21,12 @@ deployAliyunWebdavCMD = "aliyundrive-webdav --refresh-token {} -p 8900 --cache-t
 def getThread(port):
     return [
         threading.Thread(target=os.system, args=(deployAliyunWebdavCMD,)),
-        threading.Thread(target=os.system, args=(f"./rclone serve http aliyunenc:ADM --addr 0.0.0.0:{port} --read-only",))
+        threading.Thread(target=os.system, args=(f"./rclone  --config ./rclone.conf         serve http aliyunenc:ADM --addr 0.0.0.0:{port} --read-only",))
     ]
 
 if __name__ == "__main__":
     os.system("chmod 777 ./rclone")
     os.system("pip install aliyundrive-webdav")
-    with open("/app/.config/rclone/rclone.conf",'w') as f:
-        f.write('''[aliyun]
-type = webdav
-url = http://127.0.0.1:8900/
-vendor = other
-
-[aliyunenc]
-type = crypt
-remote = aliyun:ENC
-filename_encryption = standard
-directory_name_encryption = true
-password = 2_KGQMWv9743SI_O2ief6cFGvKRcIAEcqA
-''')
 
     threads = getThread(os.environ.get("PORT"))
     for t in threads:
